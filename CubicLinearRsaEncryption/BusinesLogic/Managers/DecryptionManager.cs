@@ -81,9 +81,17 @@ namespace CubicLinearRsaEncryption.BusinesLogic.Managers
                 {
                     for (var j = 0; j < wigth - 1; j += 2)
                     {
-                        var decryptedtPair = DecryptPlusStep(array[i, j], array[i, j + 1]);
-                        decryptedArray[i, j] = decryptedtPair.X;
-                        decryptedArray[i, j + 1] = decryptedtPair.Y;
+                        try
+                        {
+                            var decryptedtPair = DecryptPlusStep(array[i, j], array[i, j + 1]);
+                            decryptedArray[i, j] = decryptedtPair.X;
+                            decryptedArray[i, j + 1] = decryptedtPair.Y;
+                        }
+
+                        catch(Exception)
+                        {
+                            Console.WriteLine(i + "------" + j);
+                        }
                     }
                 }
             }
@@ -156,18 +164,19 @@ namespace CubicLinearRsaEncryption.BusinesLogic.Managers
 
         private long GetXPlusStep(long u, long v)
         {
-            var discriminator = this.GetDiscriminatorPlusStep(u, v);
+            var result = (u - rsaElements.E - Math.Pow(rsaElements.D - v, 3.0)) / (3 * (rsaElements.D - v));
+            var firstX = Convert.ToInt64(result);
+            var secondX = Convert.ToInt64(result + rsaElements.D - v);
 
-            var firstX = Convert.ToInt64(3 * (v - rsaElements.D) + Math.Sqrt(discriminator) / 6);
-            var secondX = Convert.ToInt64(3 * (v - rsaElements.D) - Math.Sqrt(discriminator) / 6);
+            //if (firstX < 0 && secondX < 0)
+            //    return 0;
+            if(firstX > 0 && secondX <= 0)
+                return firstX;
+            if (secondX > 0 && firstX <= 0)
+                return secondX;
 
-            return firstX > 0 ? firstX : secondX;
-        }
+            return firstX < secondX ? firstX  : secondX;
 
-        private long GetDiscriminatorPlusStep(long u, long v)
-        {
-            var tmp = v - rsaElements.D;
-            return Convert.ToInt64(Math.Pow(3 * tmp, 2.0) - 12 * (Math.Pow(tmp, 2.0) - (u - rsaElements.E) / tmp));
         }
 
         private long GetXMinusStep(long u, long v)
@@ -177,7 +186,14 @@ namespace CubicLinearRsaEncryption.BusinesLogic.Managers
             var firstX = Convert.ToInt64(3 * v + rsaElements.D + Math.Sqrt(discriminator) / 6);
             var secondX = Convert.ToInt64(3 * v + rsaElements.D - Math.Sqrt(discriminator) / 6);
 
-            return firstX > 0 ? firstX : secondX;
+            if (firstX < 0 && secondX < 0)
+                return 0;
+            if (firstX > 0 && secondX <= 0)
+                return firstX;
+            if (secondX > 0 && firstX <= 0)
+                return secondX;
+
+            return firstX < secondX ? firstX : secondX;
         }
 
         private long GetDiscriminatorMinusStep(long u, long v)

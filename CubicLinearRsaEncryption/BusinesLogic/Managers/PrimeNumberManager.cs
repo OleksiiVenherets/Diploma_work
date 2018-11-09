@@ -5,9 +5,9 @@ namespace CubicLinearRsaEncryption.BusinesLogic.Managers
 {
     public class PrimeNumberManager : IPrimeNumberManager
     {
-        public long GetPrimeNumber()
+        public long GetPrimeNumber(Random random)
         {
-            var number = new Random().Next(10, 100);
+            var number = random.Next(10, 100);
             if (IsPrime(number))
             {
                 return number;

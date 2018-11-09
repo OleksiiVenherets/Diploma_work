@@ -1,4 +1,5 @@
-﻿using CubicLinearRsaEncryption.Abstract.Managers;
+﻿using System;
+using CubicLinearRsaEncryption.Abstract.Managers;
 using CubicLinearRsaEncryption.Models;
 
 namespace CubicLinearRsaEncryption.BusinesLogic.Managers
@@ -14,8 +15,9 @@ namespace CubicLinearRsaEncryption.BusinesLogic.Managers
 
         public RsaElements GetRsaElements()
         {
-            var p = primeNumberManager.GetPrimeNumber();
-            var q = primeNumberManager.GetPrimeNumber();
+            var random = new Random();
+            var p = primeNumberManager.GetPrimeNumber(random);
+            var q = primeNumberManager.GetPrimeNumber(random);
 
             var n = this.GetN(p, q);
 
@@ -24,7 +26,7 @@ namespace CubicLinearRsaEncryption.BusinesLogic.Managers
             return new RsaElements
             {
                 E = e,
-                D = this.GetD(e, n, eulerfunction)
+                D = this.GetD(e, eulerfunction)
             };
         }
 
@@ -38,19 +40,19 @@ namespace CubicLinearRsaEncryption.BusinesLogic.Managers
             return (p - 1) * (q - 1);
         }
 
-        private long GetE(long number)
+        private long GetE(long eulerFunction)
         {
-            var e = number - 1;
+            var e = 2;
 
-            while (e > 1)
+            while (e < eulerFunction)
             {
-                if (this.GetLaggestCommonDivider(number, e) == 1)
+                if (this.GetLaggestCommonDivider(eulerFunction, e) == 1)
                 {
                     return e;
                 }
                 else
                 {
-                    e--;
+                    e++;
                 }
 
             }
@@ -81,19 +83,21 @@ namespace CubicLinearRsaEncryption.BusinesLogic.Managers
 
         }
 
-        private long GetD(long e, long n, long eulerFunction)
+        private long GetD(long e, long eulerFunction)
         {
             var d = eulerFunction - 1;
+            long result = 0;
             while (d > 0)
             {
                 if ((e * d) % eulerFunction == 1)
                 {
-                    return d;
+                    result = d;
+                    break;
                 }
                 d--;
             }
 
-            return 0;
+            return result;
         }
     }
 }

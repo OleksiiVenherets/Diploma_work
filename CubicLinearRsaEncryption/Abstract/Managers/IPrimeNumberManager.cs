@@ -1,7 +1,9 @@
-﻿namespace CubicLinearRsaEncryption.Abstract.Managers
+﻿using System;
+
+namespace CubicLinearRsaEncryption.Abstract.Managers
 {
     public interface IPrimeNumberManager
     {
-        long GetPrimeNumber();
+        long GetPrimeNumber(Random random);
     }
 }

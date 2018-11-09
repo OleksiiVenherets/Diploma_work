@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Runtime.Serialization;
 using CubicLinearRsaEncryption.Abstract.Mappers;
 using CubicLinearRsaEncryption.Models;
 
@@ -80,12 +82,14 @@ namespace CubicLinearRsaEncryption.BusinesLogic.Mappers
 
         public Bitmap RgbaToBitmapMap(Rgba[,] imageArray)
         {
-            var image = new Bitmap(imageArray.GetLength(0), imageArray.GetLength(1));
+
+            Bitmap image = new Bitmap(imageArray.GetLength(0), imageArray.GetLength(1));
+          
             for (var i = 0; i < imageArray.GetLength(0); i++)
             {
                 for (var j = 0; j < imageArray.GetLength(1); j++)
                 {
-                    image.SetPixel(i, j, Color.FromArgb(Math.Abs(Convert.ToInt32(imageArray[i, j].A % 256)), Math.Abs(Convert.ToInt32(imageArray[i, j].R % 256)), Math.Abs(Convert.ToInt32(imageArray[i, j].G % 256)), Math.Abs(Convert.ToInt32(imageArray[i, j].B % 256))));
+                    image.SetPixel(i, j, Color.FromArgb(Convert.ToInt32(imageArray[i, j].A + imageArray[i, j].R + imageArray[i, j].G + imageArray[i, j].B)));
                 }
             }
             return image;
