@@ -1,10 +1,12 @@
 ﻿using Autofac;
-using CubicLinearRsaEncryption.Winform.Abstract;
-using CubicLinearRsaEncryption.Winform.BusinessLogic;
 using CubicLinearRsaEncryption.Abstract.Managers;
 using CubicLinearRsaEncryption.Abstract.Mappers;
+using CubicLinearRsaEncryption.Abstract.Services;
 using CubicLinearRsaEncryption.BusinesLogic.Managers;
 using CubicLinearRsaEncryption.BusinesLogic.Mappers;
+using CubicLinearRsaEncryption.BusinesLogic.Services;
+using CubicLinearRsaEncryption.Winform.Abstract;
+using CubicLinearRsaEncryption.Winform.BusinessLogic;
 
 namespace CubicLinearRsaEncryption.Winform.IoC
 {

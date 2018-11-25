@@ -49,8 +49,6 @@
   <ItemGroup>
     <Compile Include="Abstract\IAplication.cs" />
     <Compile Include="BusinesLogic\Application.cs" />
-    <Compile Include="BusinesLogic\EncryptionService.cs" />
-    <Compile Include="BusinesLogic\ImageService.cs" />
     <Compile Include="IoC\AutofacConfig.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Program.cs" />

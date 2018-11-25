@@ -1,10 +1,10 @@
-﻿using System.Drawing;
-using System.Drawing.Imaging;
-using CubicLinearRsaEncryption.Abstract.Mappers;
-using CubicLinearRsaEncryption.Console.Abstract;
+﻿using CubicLinearRsaEncryption.Abstract.Mappers;
+using CubicLinearRsaEncryption.Abstract.Services;
 using CubicLinearRsaEncryption.Models;
+using System.Drawing;
+using System.Drawing.Imaging;
 
-namespace CubicLinearRsaEncryption.Console.BusinesLogic
+namespace CubicLinearRsaEncryption.BusinesLogic.Services
 {
     public class ImageService : IImageService
     {
@@ -32,7 +32,7 @@ namespace CubicLinearRsaEncryption.Console.BusinesLogic
 
         public void SaveToFile(string path, Bitmap bitmapImage)
         {
-            var image = (Image) bitmapImage;
+            var image = (Image)bitmapImage;
             image.Save(path, ImageFormat.Jpeg);
         }
     }

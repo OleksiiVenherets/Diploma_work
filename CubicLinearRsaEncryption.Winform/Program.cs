@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Autofac;
+using CubicLinearRsaEncryption.Winform.Abstract;
+using CubicLinearRsaEncryption.Winform.IoC;
+using System;
 
 namespace CubicLinearRsaEncryption.Winform
 {
@@ -14,9 +13,12 @@ namespace CubicLinearRsaEncryption.Winform
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var container = AutofacConfig.ConfigureContainer();
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var app = scope.Resolve<IApplication>();
+                app.Run();
+            }
         }
     }
 }

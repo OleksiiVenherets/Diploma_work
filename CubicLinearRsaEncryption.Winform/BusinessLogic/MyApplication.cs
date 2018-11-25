@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CubicLinearRsaEncryption.Winform.Abstract;
+using System.Windows.Forms;
 
 namespace CubicLinearRsaEncryption.Winform.BusinessLogic
 {
-    public class MyApplication
+    public class MyApplication : IApplication
     {
+        public void Run()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+        }
     }
 }

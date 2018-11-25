@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CubicLinearRsaEncryption.Abstract.Services;
 using CubicLinearRsaEncryption.Console.Abstract;
 using CubicLinearRsaEncryption.Console.Models;
+using CubicLinearRsaEncryption.Models;
 
 namespace CubicLinearRsaEncryption.Console.BusinesLogic
 {
@@ -22,12 +19,12 @@ namespace CubicLinearRsaEncryption.Console.BusinesLogic
 
         public void Run()
         {
-            System.Console.WriteLine(Constants.GetImagePathMessage);
+            System.Console.WriteLine(Console.Models.Constants.GetImagePathMessage);
             var path = System.Console.ReadLine();
 
             var image = this.imageService.Read(path);
 
-            System.Console.WriteLine(Constants.GetOutputImagePath);
+            System.Console.WriteLine(Console.Models.Constants.GetOutputImagePath);
             var outputPath = System.Console.ReadLine();
 
 
@@ -37,13 +34,13 @@ namespace CubicLinearRsaEncryption.Console.BusinesLogic
 
             var outputEncryptedImage = this.imageService.PrepareToOutput(encryptedImage);
 
-            this.imageService.SaveToFile(outputPath + Constants.EncryptedFileName, outputEncryptedImage);
+            this.imageService.SaveToFile(outputPath + Console.Models.Constants.EncryptedFileName, outputEncryptedImage);
 
             var decryptedImage = this.encryptionService.Decrypt(encryptedImage, EncryptionType.HorisontalPlusAside);
 
             var outputDecryptedImage = this.imageService.PrepareToOutput(decryptedImage);
 
-            this.imageService.SaveToFile(outputPath + Constants.DecryptedFileName, outputDecryptedImage);
+            this.imageService.SaveToFile(outputPath + Console.Models.Constants.DecryptedFileName, outputDecryptedImage);
 
             System.Console.ReadKey();
         }

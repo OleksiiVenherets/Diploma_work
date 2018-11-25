@@ -55,6 +55,8 @@
     <Compile Include="BusinesLogic\Managers\RsaManager.cs" />
     <Compile Include="BusinesLogic\Mappers\ImageMapper.cs" />
     <Compile Include="BusinesLogic\Services\EncryptionService.cs" />
+    <Compile Include="BusinesLogic\Services\ImageService.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Models\DecryptedPair.cs" />
     <Compile Include="Models\EncryptionType.cs" />
     <Compile Include="Models\MyImage.cs" />

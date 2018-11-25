@@ -1,8 +1,10 @@
 ﻿using Autofac;
 using CubicLinearRsaEncryption.Abstract.Managers;
 using CubicLinearRsaEncryption.Abstract.Mappers;
+using CubicLinearRsaEncryption.Abstract.Services;
 using CubicLinearRsaEncryption.BusinesLogic.Managers;
 using CubicLinearRsaEncryption.BusinesLogic.Mappers;
+using CubicLinearRsaEncryption.BusinesLogic.Services;
 using CubicLinearRsaEncryption.Console.Abstract;
 using CubicLinearRsaEncryption.Console.BusinesLogic;
 
