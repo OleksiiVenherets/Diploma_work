@@ -47,12 +47,16 @@
     <Compile Include="Abstract\Managers\IPrimeNumberManager.cs" />
     <Compile Include="Abstract\Managers\IRsaManager.cs" />
     <Compile Include="Abstract\Mappers\IImageMapper.cs" />
+    <Compile Include="Abstract\Services\IEncryptionService.cs" />
+    <Compile Include="Abstract\Services\IImageService.cs" />
     <Compile Include="BusinesLogic\Managers\DecryptionManager.cs" />
     <Compile Include="BusinesLogic\Managers\EncryptionManager.cs" />
     <Compile Include="BusinesLogic\Managers\PrimeNumberManager.cs" />
     <Compile Include="BusinesLogic\Managers\RsaManager.cs" />
     <Compile Include="BusinesLogic\Mappers\ImageMapper.cs" />
+    <Compile Include="BusinesLogic\Services\EncryptionService.cs" />
     <Compile Include="Models\DecryptedPair.cs" />
+    <Compile Include="Models\EncryptionType.cs" />
     <Compile Include="Models\MyImage.cs" />
     <Compile Include="Models\EncryptedPair.cs" />
     <Compile Include="Models\Rgba.cs" />

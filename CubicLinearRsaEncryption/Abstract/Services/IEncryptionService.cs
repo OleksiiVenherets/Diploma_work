@@ -1,7 +1,6 @@
-﻿using CubicLinearRsaEncryption.Console.Models;
-using CubicLinearRsaEncryption.Models;
+﻿using CubicLinearRsaEncryption.Models;
 
-namespace CubicLinearRsaEncryption.Console.Abstract
+namespace CubicLinearRsaEncryption.Abstract.Services
 {
     public interface IEncryptionService
     {

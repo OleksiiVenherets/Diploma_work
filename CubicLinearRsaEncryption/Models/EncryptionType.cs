@@ -1,4 +1,4 @@
-﻿namespace CubicLinearRsaEncryption.Console.Models
+﻿namespace CubicLinearRsaEncryption.Models
 {
     public enum EncryptionType
     {

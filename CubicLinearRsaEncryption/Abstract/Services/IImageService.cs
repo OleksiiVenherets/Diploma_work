@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using CubicLinearRsaEncryption.Models;
 
-namespace CubicLinearRsaEncryption.Console.Abstract
+namespace CubicLinearRsaEncryption.Abstract.Services
 {
     public interface IImageService
     {
